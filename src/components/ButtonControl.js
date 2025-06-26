@@ -26,6 +26,7 @@ const buttonStyle = {
   padding: '6px 12px',
   fontWeight: 'bold',
   cursor: 'pointer',
+  fontFamily: 'IBM Plex Sans KR',
 };
 
 export default ButtonControls;

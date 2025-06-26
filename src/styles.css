@@ -1,13 +1,9 @@
-body {
-  font-family: 'Schoolbell', cursive;
-}
-
 
 .app-layout {
   display: flex;
   height: 100vh;
   background-color: #ffe8dc;
-  font-family: 'Arial', sans-serif;
+  font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 .flower-panel {
@@ -15,7 +11,6 @@ body {
   background-color: #fce7e1;
   padding: 16px;
   border-right: 2px solid #e0b0a0;
-  font-family: 'Schoolbell',
 }
 
 .right-panel {
@@ -34,6 +29,7 @@ body {
   overflow: hidden;
   margin-top: 10px;
   border: 2px solid #ffceb5;
+  font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 .header-bar {
