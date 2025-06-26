@@ -1,60 +1,41 @@
+// FlowerPanel.js
 import React from 'react';
+import './FlowerPanel.css';
 
-const flowerList = ['tulip', 'gevera'];
+const flowerList = [
+  { name: 'tulip', label: '튤립' },
+  { name: 'gevera', label: '거베라' },
+];
 
 function FlowerPanel({ onSelect }) {
   return (
-    <div className="flower-panel" style={panelStyle}>
-      <h3 style={titleStyle}>
-        <img src="/assets/logo.png" alt="logo" style={iconStyle} />
+    <div className="flower-panel">
+      <h3 className="flower-title">
+        <img src="/assets/logo.png" alt="logo" className="flower-icon" />
         꽃 선택
-        <img src="/assets/logo.png" alt="logo" style={iconStyle} />
+        <img src="/assets/logo.png" alt="logo" className="flower-icon" />
       </h3>
-      <div style={listStyle}>
-        {flowerList.map((name) => (
-          <img
-            key={name}
-            src={`/assets/${name}.png`}
-            alt={name}
-            onClick={() => onSelect(name)}
-            style={flowerStyle}
-          />
+      <div className="flower-grid">
+        {flowerList.map((flower) => (
+          <div
+            key={flower.name}
+            className="flower-item"
+            onClick={() => onSelect(flower.name)}
+          >
+            <div className="image-wrapper">
+              <img
+                src={`/assets/${flower.name}.png`}
+                alt={flower.label}
+                className="flower-img"
+              />
+              <div className="hover-overlay">+</div>
+            </div>
+            <div className="flower-label">{flower.label}</div>
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-const panelStyle = {
-  padding: '10px',
-};
-
-const titleStyle = {
-  textAlign: 'center',
-  fontFamily: 'IBM Plex Sans KR, sans-serif',
-  fontSize: '1.5rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '10px',
-};
-
-const iconStyle = {
-  width: '24px',
-  height: '24px',
-};
-
-const listStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-  marginTop: '10px',
-};
-
-const flowerStyle = {
-  width: 60,
-  margin: 10,
-  cursor: 'pointer',
-};
-
-export default FlowerPanel;
+export default FlowerPanel; 
