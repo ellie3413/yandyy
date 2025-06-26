@@ -6,6 +6,7 @@ function ButtonControls({ onUndo, onClear }) {
     <div style={controlStyle}>
       <button onClick={onUndo} style={buttonStyle}>↩ 되돌리기</button>
       <button onClick={onClear} style={buttonStyle}>🗑 초기화</button>
+      <button style={buttonStyle}> 🔁 모드 변경하기 </button>
     </div>
   );
 }
