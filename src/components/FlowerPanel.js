@@ -2,6 +2,7 @@
 import React from 'react';
 import './FlowerPanel.css';
 
+//여기에 꽃 추가
 const flowerList = [
   { name: 'tulip', label: '튤립' },
   { name: 'gevera', label: '거베라' },
