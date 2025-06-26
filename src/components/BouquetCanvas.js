@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import ButtonControls from './ButtonControl';
+import FlowerItem from './FlowerItem';
 
 function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
   const selectedIndexRef = useRef(null);
@@ -35,18 +37,8 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
 
   return (
     <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%' }}>
-      {/* 버튼 */}
-      <div style={{
-        position: 'absolute',
-        top: 10,
-        right: 10,
-        display: 'flex',
-        gap: '10px',
-        zIndex: 10,
-      }}>
-        <button onClick={onUndo} style={buttonStyle}>↩ 되돌리기</button>
-        <button onClick={onClear} style={buttonStyle}>🗑 초기화</button>
-      </div>
+      {/* 우측 상단 버튼 */}
+      <ButtonControls onUndo={onUndo} onClear={onClear} />
 
       {/* 화병 */}
       <img
@@ -54,43 +46,26 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
         alt="vase"
         style={{
           position: 'absolute',
-          bottom: 0,
+          bottom: 20,
           left: '50%',
           transform: 'translateX(-50%)',
           height: 350,
           zIndex: 9999,
+          pointerEvents: 'none',
         }}
       />
 
       {/* 꽃들 */}
       {bouquet.map((flower, idx) => (
-        <img
+        <FlowerItem
           key={idx}
-          src={`/assets/${flower.name}.png`}
-          alt={flower.name}
-          onMouseDown={(e) => handleMouseDown(e, idx)}
-          style={{
-            position: 'absolute',
-            left: flower.x,
-            top: flower.y,
-            width: 150,
-            cursor: 'grab',
-            userSelect: 'none',
-            zIndex: 10 + idx,
-          }}
+          flower={flower}
+          index={idx}
+          onMouseDown={handleMouseDown}
         />
       ))}
     </div>
   );
 }
-
-const buttonStyle = {
-  backgroundColor: '#fff0e6',
-  border: '1px solid #ffb997',
-  borderRadius: '8px',
-  padding: '6px 12px',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-};
 
 export default BouquetCanvas;

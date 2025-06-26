@@ -1,6 +1,6 @@
 import React from 'react';
 
-const flowerList = ['tulip', 'daisy', 'ranunculus', 'daffodil'];
+const flowerList = ['tulip', 'gevera'];
 
 function FlowerPanel({ onSelect }) {
   return (

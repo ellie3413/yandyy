@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './components/header'; // 추가
 import FlowerPanel from './components/FlowerPanel';
 import BouquetCanvas from './components/BouquetCanvas';
 import './styles.css';
@@ -26,14 +27,17 @@ function App() {
   const handleUndo = () => setBouquet(prev => prev.slice(0, -1));
 
   return (
-    <div className="app-layout">
-      <FlowerPanel onSelect={handleAddFlower} />
-      <BouquetCanvas
-        bouquet={bouquet}
-        onClear={handleClear}
-        onUndo={handleUndo}
-        onUpdatePosition={handleUpdatePosition}
-      />
+    <div>
+      <Header />
+      <div className="app-layout">
+        <FlowerPanel onSelect={handleAddFlower} />
+        <BouquetCanvas
+          bouquet={bouquet}
+          onClear={handleClear}
+          onUndo={handleUndo}
+          onUpdatePosition={handleUpdatePosition}
+        />
+      </div>
     </div>
   );
 }
