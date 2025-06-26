@@ -4,8 +4,8 @@ const flowerList = ['tulip', 'gevera'];
 
 function FlowerPanel({ onSelect }) {
   return (
-    <div className="flower-panel">
-      <h3>🌸 꽃 선택</h3>
+    <div className="flower-panel" style={panelStyle}>
+      <h3 style={titleStyle}>🌸 꽃 선택 🌸</h3>
       {flowerList.map((name) => (
         <img
           key={name}
@@ -18,5 +18,15 @@ function FlowerPanel({ onSelect }) {
     </div>
   );
 }
+
+const panelStyle = {
+  padding: '10px',
+};
+
+const titleStyle = {
+  textAlign: 'center',
+  fontFamily: 'IBM Plex Sans KR, sans-serif',
+  fontSize: '1.5rem',
+};
 
 export default FlowerPanel;

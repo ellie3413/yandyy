@@ -27,6 +27,7 @@ const buttonStyle = {
   fontWeight: 'bold',
   cursor: 'pointer',
   fontFamily: 'IBM Plex Sans KR',
+  fontSize: '1rem',
 };
 
 export default ButtonControls;
