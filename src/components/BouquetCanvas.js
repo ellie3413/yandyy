@@ -84,7 +84,7 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
           cursor: 'pointer',
         }}
       >
-        화병 바꾸기
+        화분 바꾸기
       </button>
 
       {/* 꽃들 */}
