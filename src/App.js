@@ -13,7 +13,7 @@ function App() {
     // 랜덤 파스텔 색상 생성
     const pastel = () => {
       const hue = Math.floor(Math.random() * 360);
-      return `hsl(${hue}, 100%, 90%)`;
+      return `hsl(${hue}, 100%, 98%)`;
     };
     setBgColor(pastel());
   };
@@ -48,7 +48,11 @@ function App() {
     setBouquet(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleClear = () => setBouquet([]);
+  const handleClear = () => {
+  setBouquet([]);
+  setBgColor('#fff4ea'); 
+};
+
   const handleUndo = () => setBouquet(prev => prev.slice(0, -1));
 
   return (
