@@ -1,12 +1,12 @@
 // components/CanvasControls.js
 import React from 'react';
 
-function ButtonControls({ onUndo, onClear }) {
+function ButtonControls({ onUndo, onClear, onChangeBackground }) {
   return (
     <div style={controlStyle}>
       <button onClick={onUndo} style={buttonStyle}>↩ 되돌리기</button>
       <button onClick={onClear} style={buttonStyle}>🗑 초기화</button>
-      <button style={buttonStyle}> 🔁 배경색 변경하기 </button>
+      <button onClick={onChangeBackground} style={buttonStyle}> 🔁 배경색 변경하기 </button>
     </div>
   );
 }

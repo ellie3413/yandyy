@@ -8,7 +8,7 @@ const vaseOptions = [
   'largevase.png'
 ];
 
-function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSize, onRemove }) {
+function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSize, onRemove, bgColor, onChangeBackground  }) {
   const selectedIndexRef = useRef(null);
   const offsetRef = useRef({ dx: 0, dy: 0 });
   const [vaseIndex, setVaseIndex] = useState(0);
@@ -48,9 +48,9 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
 
 
   return (
-    <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%' }}>
+    <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%', backgroundColor: bgColor, }}>
       {/* 우측 상단 버튼 */}
-      <ButtonControls onUndo={onUndo} onClear={onClear} />
+      <ButtonControls onUndo={onUndo} onClear={onClear} onChangeBackground={onChangeBackground} />
 
       {/* 화병 */}
       <img

@@ -7,6 +7,18 @@ import './styles.css';
 function App() {
   const [bouquet, setBouquet] = useState([]);
 
+  const [bgColor, setBgColor] = useState('#fff4ea'); // 기본 배경색
+
+  const handleChangeBackground = () => {
+    // 랜덤 파스텔 색상 생성
+    const pastel = () => {
+      const hue = Math.floor(Math.random() * 360);
+      return `hsl(${hue}, 100%, 90%)`;
+    };
+    setBgColor(pastel());
+  };
+
+
   const handleAddFlower = (flowerName) => {
     setBouquet([
       ...bouquet,
@@ -51,6 +63,8 @@ function App() {
           onUpdatePosition={handleUpdatePosition}
           onUpdateSize={handleUpdateSize}
           onRemove={handleRemoveFlower}
+          bgColor={bgColor}
+          onChangeBackground={handleChangeBackground} 
         />
       </div>
     </div>
