@@ -1,10 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import ButtonControls from './ButtonControl';
 import FlowerItem from './FlowerItem';
+
+const vaseOptions = [
+  'ribbonvase.png',
+  'smallvase.png',
+  'largevase.png'
+];
 
 function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
   const selectedIndexRef = useRef(null);
   const offsetRef = useRef({ dx: 0, dy: 0 });
+  const [vaseIndex, setVaseIndex] = useState(0);
 
   const handleMouseDown = (e, idx) => {
     const flower = bouquet[idx];
@@ -35,6 +42,10 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
     window.removeEventListener('mouseup', handleMouseUp);
   };
 
+  const handleVaseChange = () => {
+    setVaseIndex((prev) => (prev + 1) % vaseOptions.length);
+  };
+
   return (
     <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%' }}>
       {/* 우측 상단 버튼 */}
@@ -42,18 +53,38 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
 
       {/* 화병 */}
       <img
-        src="/assets/vase.png"
+        src={`/assets/${vaseOptions[vaseIndex]}`}
         alt="vase"
         style={{
           position: 'absolute',
           bottom: 20,
           left: '50%',
           transform: 'translateX(-50%)',
-          height: 350,
+          height: 280,
           zIndex: 9999,
           pointerEvents: 'none',
         }}
       />
+
+      {/* 화병 변경 버튼 */}
+      <button
+        onClick={handleVaseChange}
+        style={{
+          position: 'absolute',
+          bottom: 10,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 10000,
+          backgroundColor: '#fff0e6',
+          border: '1px solid #ffb997',
+          borderRadius: '8px',
+          padding: '6px 12px',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+        }}
+      >
+        화병 바꾸기
+      </button>
 
       {/* 꽃들 */}
       {bouquet.map((flower, idx) => (
