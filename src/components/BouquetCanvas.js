@@ -8,7 +8,7 @@ const vaseOptions = [
   'largevase.png'
 ];
 
-function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
+function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSize }) {
   const selectedIndexRef = useRef(null);
   const offsetRef = useRef({ dx: 0, dy: 0 });
   const [vaseIndex, setVaseIndex] = useState(0);
@@ -45,6 +45,7 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
   const handleVaseChange = () => {
     setVaseIndex((prev) => (prev + 1) % vaseOptions.length);
   };
+
 
   return (
     <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%' }}>
@@ -93,6 +94,7 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
           flower={flower}
           index={idx}
           onMouseDown={handleMouseDown}
+          onUpdateSize={onUpdateSize}
         />
       ))}
     </div>
