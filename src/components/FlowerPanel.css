@@ -75,3 +75,19 @@
   font-family: 'IBM Plex Sans KR', sans-serif;
   color: #444;
 }
+
+
+.flower-link {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #888;
+  text-decoration: underline;
+  transition: color 0.2s;
+  text-align: center;
+}
+
+.flower-link:hover {
+  color: #ff4081;
+}
+
