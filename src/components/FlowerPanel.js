@@ -6,6 +6,11 @@ import './FlowerPanel.css';
 const flowerList = [
   { name: 'tulip', label: '튤립' },
   { name: 'gevera', label: '거베라' },
+  { name: 'rose', label: '장미' },
+  { name: 'sunflower', label: '해바라기' },
+  { name: 'suguk', label: '수국' },
+  { name: 'daisy', label: '데이지' },
+  { name: 'leaf', label: '잎' },
 ];
 
 function FlowerPanel({ onSelect }) {
