@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import KakaoLogin from './components/KakaoLogin';
+import KakaoCallback from './components/KakaoCallback';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<KakaoLogin />} />
+        <Route path="/kakao/login" element={<KakaoLogin />} />
+        <Route path="/kakao/callback" element={<KakaoCallback />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

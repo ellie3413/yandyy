@@ -1,10 +1,21 @@
 // components/Header.js
 import React from 'react';
+import { Link } from 'react-router-dom';  // 추가
 
-function Header() {
+export default function Header({ isLoggedIn, onLogout }) {
   return (
     <header style={headerStyle}>
       <h1 style={titleStyle}>Flover</h1>
+
+      {isLoggedIn ? (
+        <button onClick={onLogout} style={buttonStyle}>
+          카카오 로그아웃
+        </button>
+      ) : (
+        <Link to="/kakao/login" style={linkStyle}>
+          카카오 로그인
+        </Link>
+      )}
     </header>
   );
 }
@@ -28,4 +39,21 @@ const titleStyle = {
   color: '#ff6f91',
 };
 
-export default Header;
+const linkStyle = {
+  marginLeft: '10px',
+  color: '#ff6f91',
+  textDecoration: 'none',
+  fontSize: '1.2rem',
+};
+
+const buttonStyle = {
+  marginLeft: 'auto',
+  fontSize: '1rem',
+  padding: '6px 12px',
+  backgroundColor: '#fff0e6',
+  border: '1px solid #ffb997',
+  borderRadius: '8px',
+  cursor: 'pointer',
+  color: '#ff6f91',
+  fontWeight: 'bold',
+};

@@ -1,9 +1,10 @@
 // components/CanvasControls.js
 import React from 'react';
 
-function ButtonControls({ onUndo, onClear }) {
+function ButtonControls({ onUndo, onClear, onShare }) {
   return (
     <div style={controlStyle}>
+      <button onClick={onShare} style={buttonStyle}>🔗카카오 공유하기</button>
       <button onClick={onUndo} style={buttonStyle}>↩ 되돌리기</button>
       <button onClick={onClear} style={buttonStyle}>🗑 초기화</button>
       <button style={buttonStyle}> 🔁 모드 변경하기 </button>

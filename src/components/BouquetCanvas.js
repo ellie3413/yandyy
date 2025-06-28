@@ -2,7 +2,13 @@ import React, { useRef } from 'react';
 import ButtonControls from './ButtonControl';
 import FlowerItem from './FlowerItem';
 
-function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition }) {
+function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onShare }) {
+
+//이곳에 카카오 공유하기 버튼 추가
+
+
+
+
   const selectedIndexRef = useRef(null);
   const offsetRef = useRef({ dx: 0, dy: 0 });
 
