@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-function FlowerItem({ flower, index, onMouseDown, onUpdateSize, onRemove }) {
+function FlowerItem({ flower, index, onMouseDown, onRemove, onMoveForward, onMoveBackward }) {
   const [hovered, setHovered] = useState(false);
   const size = flower.size || 100;
+  const rotation = flower.rotation || 0;
 
   return (
     <div
@@ -11,28 +12,29 @@ function FlowerItem({ flower, index, onMouseDown, onUpdateSize, onRemove }) {
         left: flower.x,
         top: flower.y,
         zIndex: 10 + index,
-        textAlign: 'center',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
+      {/* 꽃 이미지 */}
       <img
         src={`/assets/${flower.name}.png`}
         alt={flower.name}
         onMouseDown={(e) => onMouseDown(e, index)}
         style={{
           width: `${size}px`,
+          transform: `rotate(${rotation}deg)`,
           cursor: 'grab',
           userSelect: 'none',
           display: 'block',
-          margin: '0 auto',
         }}
       />
-      
+
+      {/* 버튼 오버레이 */}
       {hovered && (
-        <div style={buttonContainerStyle}>
-          <button onClick={() => onUpdateSize(index, +10)} style={resizeBtn}>＋</button>
-          <button onClick={() => onUpdateSize(index, -10)} style={resizeBtn}>－</button>
+        <div style={overlayButtonContainer}>
+          <button onClick={() => onMoveForward(index)} style={ctrlBtn}>앞으로</button>
+          <button onClick={() => onMoveBackward(index)} style={ctrlBtn}>뒤로</button>
           <button onClick={() => onRemove(index)} style={deleteBtn}>❌</button>
         </div>
       )}
@@ -40,15 +42,20 @@ function FlowerItem({ flower, index, onMouseDown, onUpdateSize, onRemove }) {
   );
 }
 
-const buttonContainerStyle = {
-  marginTop: '4px',
+const overlayButtonContainer = {
+  position: 'absolute',
+  top: 0,
+  right: 0,
   display: 'flex',
-  justifyContent: 'center',
   gap: '4px',
+  backgroundColor: '#fffaf0cc',
+  borderRadius: '8px',
+  padding: '2px',
+  zIndex: 999,
 };
 
-const resizeBtn = {
-  padding: '2px 6px',
+const ctrlBtn = {
+  padding: '4px 6px',
   fontSize: '12px',
   cursor: 'pointer',
   backgroundColor: '#fff0e6',
@@ -57,10 +64,10 @@ const resizeBtn = {
 };
 
 const deleteBtn = {
-  ...resizeBtn,
-  color: '#fff',
+  ...ctrlBtn,
   backgroundColor: '#ff6b6b',
   borderColor: '#ff6b6b',
+  color: 'white',
 };
 
 export default FlowerItem;

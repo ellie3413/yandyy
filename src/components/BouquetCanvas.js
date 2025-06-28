@@ -1,22 +1,31 @@
 import React, { useRef, useState } from 'react';
 import ButtonControls from './ButtonControl';
 import FlowerItem from './FlowerItem';
+import FlowerControl from './FlowerControl';
+
 
 const vaseOptions = [
   'ribbonvase.png',
+  'bluevase.png',
+  'purplevase.png',
   'smallvase.png',
   'largevase.png'
 ];
 
-function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSize, onRemove, bgColor, onChangeBackground  }) {
+function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSize, 
+  onRemove, bgColor, onChangeBackground, onRotate, onMoveForward, onMoveBackward }) {
   const selectedIndexRef = useRef(null);
   const offsetRef = useRef({ dx: 0, dy: 0 });
   const [vaseIndex, setVaseIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
 
   const handleMouseDown = (e, idx) => {
     const flower = bouquet[idx];
+    
 
     selectedIndexRef.current = idx;
+    setSelectedIndex(idx);
     offsetRef.current = {
       dx: e.clientX - flower.x,
       dy: e.clientY - flower.y,
@@ -46,11 +55,20 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
     setVaseIndex((prev) => (prev + 1) % vaseOptions.length);
   };
 
-
   return (
     <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%', backgroundColor: bgColor, }}>
       {/* 우측 상단 버튼 */}
       <ButtonControls onUndo={onUndo} onClear={onClear} onChangeBackground={onChangeBackground} />
+      <FlowerControl
+        index={selectedIndex}
+        onUpdateSize={onUpdateSize}
+        onUpdateRotation={onRotate}
+        onRemove={(idx) => {
+          onRemove(idx);
+          setSelectedIndex(null);
+        }}
+/>
+
 
       {/* 화병 */}
       <img
@@ -61,7 +79,7 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
           bottom: 20,
           left: '50%',
           transform: 'translateX(-50%)',
-          height: 280,
+          height: 270,
           zIndex: 9999,
           pointerEvents: 'none',
         }}
@@ -94,11 +112,15 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
           flower={flower}
           index={idx}
           onMouseDown={handleMouseDown}
-          onUpdateSize={onUpdateSize}
           onRemove={onRemove}
+          onMoveForward={onMoveForward}
+          onMoveBackward={onMoveBackward}
         />
 
+
       ))}
+
+
     </div>
   );
 }

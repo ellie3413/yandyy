@@ -18,13 +18,41 @@ function App() {
     setBgColor(pastel());
   };
 
+  const handleMoveForward = (index) => {
+  setBouquet(prev => {
+    if (index >= prev.length - 1) return prev;
+    const newBouquet = [...prev];
+    [newBouquet[index], newBouquet[index + 1]] = [newBouquet[index + 1], newBouquet[index]];
+    return newBouquet;
+  });
+};
+
+const handleMoveBackward = (index) => {
+  setBouquet(prev => {
+    if (index <= 0) return prev;
+    const newBouquet = [...prev];
+    [newBouquet[index], newBouquet[index - 1]] = [newBouquet[index - 1], newBouquet[index]];
+    return newBouquet;
+  });
+};
+
+
 
   const handleAddFlower = (flowerName) => {
     setBouquet([
       ...bouquet,
-      { name: flowerName, x: 150, y: 100, size: 100 } 
+      { name: flowerName, x: 150, y: 100, size: 120, rotation: 0 } 
     ]);
   };
+
+  const handleRotateFlower = (index, delta) => {
+  setBouquet(prev =>
+    prev.map((flower, i) =>
+      i === index ? { ...flower, rotation: flower.rotation + delta } : flower
+    )
+  );
+};
+
 
   const handleUpdatePosition = (index, newX, newY) => {
     setBouquet(prev =>
@@ -65,10 +93,13 @@ function App() {
           onClear={handleClear}
           onUndo={handleUndo}
           onUpdatePosition={handleUpdatePosition}
+          onRotate={handleRotateFlower} 
           onUpdateSize={handleUpdateSize}
           onRemove={handleRemoveFlower}
           bgColor={bgColor}
           onChangeBackground={handleChangeBackground} 
+          onMoveForward={handleMoveForward}
+  onMoveBackward={handleMoveBackward}
         />
       </div>
     </div>
