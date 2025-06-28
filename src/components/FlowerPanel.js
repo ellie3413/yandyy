@@ -10,7 +10,8 @@ const flowerList = [
   { name: 'sunflower', label: '해바라기' },
   { name: 'suguk', label: '수국' },
   { name: 'daisy', label: '데이지' },
-  { name: 'leaf', label: '잎' },
+  { name: 'carne', label: '카네이션' },
+  { name: 'leaf', label: '잎 추가' },
 ];
 
 function FlowerPanel({ onSelect }) {

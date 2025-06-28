@@ -3,6 +3,7 @@ import Header from './components/header'; // 추가
 import FlowerPanel from './components/FlowerPanel';
 import BouquetCanvas from './components/BouquetCanvas';
 import './styles.css';
+import Footer from './components/footer';
 
 function App() {
   const [bouquet, setBouquet] = useState([]);
