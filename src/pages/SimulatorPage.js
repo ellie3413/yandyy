@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState , useRef} from 'react';
 import Header from '../components/header';
 import FlowerPanel from '../components/FlowerPanel';
 import BouquetCanvas from '../components/BouquetCanvas';
 import './styles.css';
+import axios from 'axios';
+import { Popup } from '../components/popup';
+import html2canvas from 'html2canvas';
+
+window.Kakao.init('43ee9fbea365f188f9a041cf3563e676');
+
 
 function SimulatorPage() {
   const [bouquet, setBouquet] = useState([]);
@@ -83,6 +89,56 @@ const handleMoveBackward = (index) => {
 
   const handleUndo = () => setBouquet(prev => prev.slice(0, -1));
 
+
+
+
+//코드 합치는 부분
+
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
+
+
+  const canvasRef = useRef(null);
+
+  const handleOpenPopup = async () => {
+    const el = canvasRef.current;
+    if (!el) return;
+  
+    // 1) 캔버스 스냅샷
+    const original = await html2canvas(el, { useCORS: true, backgroundColor: 'null' });
+  
+    // 2) 정사각으로 크롭
+    const side  = Math.min(original.width-100, original.height-100);
+    const x     = (original.width - side)  / 2;
+    const y     = (original.height - side)-50;
+    const square = document.createElement('canvas');
+    square.width = square.height = side;
+    const ctx = square.getContext('2d');
+    ctx.drawImage(original, x, y, side, side, 0, 0, side, side);
+  
+    // 3) dataURL 저장 & 팝업 열기
+    setCapturedImage(square.toDataURL('image/png'));
+      setIsPopupOpen(true);
+    };
+
+
+    const handleShare = (message) => {
+      console.log(setCapturedImage, 'setCapturedImage');
+      window.Kakao.Share.sendCustom({
+          templateId: 121899,
+          templateArgs: {
+            THU: setCapturedImage,////여기가 수정해야함, 이미지 주소 넣어야함
+            message: message,
+          },
+        });
+    };
+  
+
+
+
+
+
   return (
     <div>
       <Header />
@@ -100,7 +156,14 @@ const handleMoveBackward = (index) => {
           onChangeBackground={handleChangeBackground} 
           onMoveForward={handleMoveForward}
   onMoveBackward={handleMoveBackward}
+  ref={canvasRef}
+  onShare={handleOpenPopup}
         />
+      {isPopupOpen ? <Popup 
+      openModal={isPopupOpen} 
+      setOpenModal={setIsPopupOpen} 
+      imageSrc={capturedImage} 
+      handleShare={handleShare} /> : null}  
       </div>
     </div>
   );
