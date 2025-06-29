@@ -90,12 +90,13 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
         onClick={handleVaseChange}
         style={{
           position: 'absolute',
-          bottom: 10,
+          bottom: 35,
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 10000,
-          backgroundColor: '#fff0e6',
-          border: '1px solid #ffb997',
+          backgroundColor: 'rgba(170, 203, 115, 0.4)',
+          border: '1px solid #6E9D30',
+          fontFamily: 'IBM Plex Sans KR',
           borderRadius: '8px',
           padding: '6px 12px',
           fontWeight: 'bold',
