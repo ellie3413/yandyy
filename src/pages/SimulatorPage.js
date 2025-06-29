@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/header';
 import FlowerPanel from '../components/FlowerPanel';
 import BouquetCanvas from '../components/BouquetCanvas';
@@ -6,6 +7,7 @@ import './styles.css';
 
 function SimulatorPage() {
   const [bouquet, setBouquet] = useState([]);
+  const navigate = useNavigate();
 
   const [bgColor, setBgColor] = useState('#fff4ea'); // 기본 배경색
 
@@ -86,6 +88,23 @@ const handleMoveBackward = (index) => {
   return (
     <div>
       <Header />
+      <div style={{ padding: '10px' }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            marginBottom: '10px',
+            backgroundColor: '#fff0e6',
+            border: '1px solid #ffb997',
+            borderRadius: '8px',
+            padding: '6px 12px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            fontFamily: 'IBM Plex Sans KR',
+          }}
+        >
+          ⬅ 랜딩 페이지로 돌아가기
+        </button>
+      </div>
       <div className="app-layout">
         <FlowerPanel onSelect={handleAddFlower} />
         <BouquetCanvas
