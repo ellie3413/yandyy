@@ -58,15 +58,16 @@ const ctrlBtn = {
   padding: '4px 6px',
   fontSize: '12px',
   cursor: 'pointer',
-  backgroundColor: '#fff0e6',
-  border: '1px solid #ffb997',
+  backgroundColor: 'rgba(170, 203, 115, 0.4)',
+  border: '1px solid black',
   borderRadius: '4px',
 };
 
 const deleteBtn = {
   ...ctrlBtn,
-  backgroundColor: '#ff6b6b',
+  backgroundColor: 'white',
   borderColor: '#ff6b6b',
+  border: '2px solid',
   color: 'white',
 };
 

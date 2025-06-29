@@ -5,13 +5,15 @@ function FlowerControl({ index, onUpdateSize, onUpdateRotation, onRemove }) {
 
   return (
     <div style={controlPanelStyle}>
-      <h4 style={{ margin: '4px 0' }}>🌸 꽃 속성 변경</h4>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <h4 style={{ margin: 0, display: 'flex', alignItems: 'center'  }}> 꽃 속성 변경: </h4>
       <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
         <button onClick={() => onUpdateSize(index, +10)} style={ctrlBtn}>＋</button>
         <button onClick={() => onUpdateSize(index, -10)} style={ctrlBtn}>－</button>
         <button onClick={() => onUpdateRotation(index, -5)} style={ctrlBtn}>↪️</button>
         <button onClick={() => onUpdateRotation(index, +5)} style={ctrlBtn}>↩️</button>
-        <button onClick={() => onRemove(index)} style={deleteBtn}>❌ 삭제</button>
+        <button onClick={() => onRemove(index)} style={deleteBtn}>삭제</button>
+      </div>
       </div>
     </div>
   );
@@ -19,10 +21,12 @@ function FlowerControl({ index, onUpdateSize, onUpdateRotation, onRemove }) {
 
 const controlPanelStyle = {
   position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
   top: 60,
   right: 10,
-  backgroundColor: '#fffaf0',
-  border: '2px solid #ffb997',
+  backgroundColor: 'white',
+  border: '1px solid #6E9D30',
   borderRadius: '10px',
   padding: '10px',
   zIndex: 1000,
@@ -34,16 +38,16 @@ const ctrlBtn = {
   padding: '6px 10px',
   fontSize: '13px',
   cursor: 'pointer',
-  backgroundColor: '#fff0e6',
-  border: '1px solid #ffb997',
+  backgroundColor: 'rgba(170, 203, 115, 0.4)',
+  border: '1px solid #6E9D30',
   borderRadius: '4px',
 };
 
 const deleteBtn = {
   ...ctrlBtn,
   color: '#fff',
-  backgroundColor: '#ff6b6b',
-  borderColor: '#ff6b6b',
+  backgroundColor: 'rgba(117, 136, 87, 0.8)',
+  borderColor: '#6E9D30',
 };
 
 export default FlowerControl;
