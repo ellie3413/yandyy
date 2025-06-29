@@ -19,7 +19,7 @@ function LandingPage() {
   const titleStyle = {
     fontFamily: "'Sacramento', cursive",
     fontSize: '8rem',
-    color: '#3A7D44',
+    color: '#AACB73',
     marginBottom: '10px',
   };
 
@@ -27,7 +27,7 @@ function LandingPage() {
     marginTop: '40px',
     padding: '14px 28px',
     fontSize: '1rem',
-    backgroundColor: '#FAF6E9',
+    backgroundColor: '#CDE990',
     border: 'none',
     borderRadius: '8px',
     color: 'A0C878',
