@@ -6,7 +6,7 @@ function LandingPage() {
 
   const containerStyle = {
     height: '100vh',
-    backgroundImage: 'url("/assets/background.png")',
+    backgroundImage: 'url("/assets/background1.png")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
