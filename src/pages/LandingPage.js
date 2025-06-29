@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './LandingPage.css'; 
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -18,31 +19,35 @@ function LandingPage() {
 
   const titleStyle = {
     fontFamily: "'Sacramento', cursive",
-    fontSize: '8rem',
+    fontSize: '9.3rem',
     color: '#AACB73',
-    marginBottom: '10px',
+    marginBottom: '5px',
   };
 
-  const buttonStyle = {
-    marginTop: '40px',
-    padding: '14px 28px',
-    fontSize: '1rem',
-    backgroundColor: '#CDE990',
-    border: 'none',
-    borderRadius: '8px',
-    color: 'A0C878',
-    cursor: 'pointer',
-    fontFamily: "'IBM Plex Sans KR', sans-serif",
+  const dummyButtonHandler = () => {
+    alert('아직 개발 중입니다. 조금만 기다려주세요!');
   };
+
+  const buttonRowStyle = {
+    display: 'flex',
+    flexDirection: 'row', // 중요: 가로 정렬
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0px',
+    marginTop: '10px',
+  };
+
 
   return (
     <div style={containerStyle}>
       <div>
         <div style={titleStyle}>Flover</div>
       </div>
-      <button style={buttonStyle} onClick={() => navigate('/simulator')}>
-        시뮬레이션 하러 가기 →
-      </button>
+     <div style={buttonRowStyle}>
+        <button className="simulator-button" onClick={dummyButtonHandler}>우리집 근처 꽃집 찾기</button>
+        <button className="simulator-button" onClick={() => navigate('/simulator')}>꽃 시뮬레이션</button>
+        <button className="simulator-button" onClick={dummyButtonHandler}>FloverAI</button>
+      </div>
     </div>
   );
 }
