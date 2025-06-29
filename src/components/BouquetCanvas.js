@@ -99,7 +99,6 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onUpdateSiz
           fontFamily: 'IBM Plex Sans KR',
           borderRadius: '8px',
           padding: '6px 12px',
-          fontWeight: 'bold',
           cursor: 'pointer',
         }}
       >

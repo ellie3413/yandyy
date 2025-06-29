@@ -41,7 +41,7 @@ const headerContentStyle = {
 const titleStyle = {
   margin: 0,
   fontSize: '2.6rem',
-  fontFamily: "'Sacramento', cursive",
+  fontFamily: "'Grand Hotel', cursive",
   color: '#AACB73',
 };
 
