@@ -18,7 +18,7 @@ function LandingPage() {
 
 
   const titleStyle = {
-    fontFamily: "'Grand Hotel', cursive",
+    fontFamily: "'Sacramento', cursive",
     fontSize: '9.3rem',
     color: '#AACB73',
     marginBottom: '5px',
