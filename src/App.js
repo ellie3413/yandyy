@@ -3,13 +3,15 @@ import Header from './components/header'; // 추가
 import FlowerPanel from './components/FlowerPanel';
 import BouquetCanvas from './components/BouquetCanvas';
 import KakaoLogin from './components/KakaoLogin';
+import { initKakao } from './components/KakaoInit';
 import './styles.css';
 import axios from 'axios';
-
+import { Popup } from './components/popup';
+window.Kakao.init('43ee9fbea365f188f9a041cf3563e676');
 function App() {
   const [bouquet, setBouquet] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   // 1) 마운트 시 세션에 토큰이 있으면 로그인 상태로
   useEffect(() => {
     const token = sessionStorage.getItem('kakao_token');
@@ -36,7 +38,6 @@ function App() {
     sessionStorage.removeItem('userInfo');
     setIsLoggedIn(false);
   };
-
   // 3) 로그인 성공 시 토큰 저장
   const handleLoginSuccess = (token) => {
     sessionStorage.setItem('kakao_token', token);
@@ -60,6 +61,21 @@ function App() {
   };
   const handleClear = () => setBouquet([]);
   const handleUndo = () => setBouquet(prev => prev.slice(0, -1));
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleShare = () => {
+    window.Kakao.Share.sendCustom({
+        templateId: 121899,
+        templateArgs: {
+          title: '제목 영역입니다.',
+          description: '설명 영역입니다.',
+        },
+      });
+  };
+
+
 
     return (
         <div>
@@ -75,7 +91,9 @@ function App() {
           onClear={handleClear}
           onUndo={handleUndo}
           onUpdatePosition={handleUpdatePosition}
+          onShare={handleOpenPopup}
         />
+        {isPopupOpen ? <Popup openModal={isPopupOpen} setOpenModal={setIsPopupOpen} handleShare={handleShare} /> : null}
       </div>
     </div>
   );

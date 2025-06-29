@@ -4,10 +4,6 @@ import FlowerItem from './FlowerItem';
 
 function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onShare }) {
 
-//이곳에 카카오 공유하기 버튼 추가
-
-
-
 
   const selectedIndexRef = useRef(null);
   const offsetRef = useRef({ dx: 0, dy: 0 });
@@ -44,7 +40,7 @@ function BouquetCanvas({ bouquet, onClear, onUndo, onUpdatePosition, onShare }) 
   return (
     <div className="bouquet-canvas" style={{ position: 'relative', height: '100%', width: '100%' }}>
       {/* 우측 상단 버튼 */}
-      <ButtonControls onUndo={onUndo} onClear={onClear} />
+      <ButtonControls onUndo={onUndo} onClear={onClear} onShare={onShare}/>
 
       {/* 화병 */}
       <img
