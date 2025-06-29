@@ -17,11 +17,6 @@ function FlowerPanel({ onSelect }) {
 
   return (
     <div className="flower-panel">
-      <h3 className="flower-title">
-        <img src="/assets/logo.png" alt="logo" className="flower-icon" />
-        꽃 선택
-        <img src="/assets/logo.png" alt="logo" className="flower-icon" />
-      </h3>
       <div className="flower-grid">
         {flowerList.map((flower) => (
           <div

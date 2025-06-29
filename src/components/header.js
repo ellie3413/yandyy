@@ -9,10 +9,10 @@ function Header() {
     <header style={headerStyle}>
       <div style={headerContentStyle}>
         <button style={homeButtonStyle} onClick={() => navigate('/')}>
-          ◃ Main Page
+          <img src="/assets/home.png" alt="Home" style={homeIconStyle} />
         </button>
         <h1 style={titleStyle}>Flover</h1>
-        <div style={{ width: 80 }} /> {/* 오른쪽 공간 확보용 (버튼 없는 쪽 균형) */}
+        <div style={{ width: 40 }} /> {/* 오른쪽 여백으로 균형 유지 */}
       </div>
     </header>
   );
@@ -21,7 +21,7 @@ function Header() {
 const headerStyle = {
   width: '100%',
   padding: '3px 0',
-  backgroundColor: '#FFEDFA',
+  backgroundColor: 'white',
   textAlign: 'left',
   borderBottom: '2px solid #AACB73',
   position: 'sticky',
@@ -42,19 +42,19 @@ const titleStyle = {
   margin: 0,
   fontSize: '2.6rem',
   fontFamily: "'Sacramento', cursive",
-  letterSpacing: '0px',
   color: '#AACB73',
 };
 
 const homeButtonStyle = {
-  backgroundColor: '#FFEDFA',
+  backgroundColor: 'transparent',
   border: 'none',
-  borderRadius: '6px',
-  padding: '3px 10px',
-  color: 'navy',
-  fontSize: '1rem',
   cursor: 'pointer',
-  fontFamily: `'Roboto Serif', serif`,
+  padding: 0,
+};
+
+const homeIconStyle = {
+  width: '32px',
+  height: '32px',
 };
 
 export default Header;

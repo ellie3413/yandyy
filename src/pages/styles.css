@@ -2,13 +2,13 @@
 .app-layout {
   display: flex;
   height: 100vh;
-  background-color: #ffe8dc;
+  background-color: white;
   font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 .flower-panel {
   width: 220px;
-  background-color: white;
+  background-color: rgba(170, 203, 115, 0.2);
   padding: 16px;
   border-right: 2px solid #AACB73;
 }
@@ -23,12 +23,11 @@
 
 .bouquet-canvas {
   flex: 1;
-  background-color: #fff4ea;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
   margin: 10px;
-  border: 2px solid #ffceb5;
+  border: 2px solid white;
   font-family: 'IBM Plex Sans KR', sans-serif;
 }
 

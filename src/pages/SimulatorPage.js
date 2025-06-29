@@ -7,7 +7,7 @@ import './styles.css';
 function SimulatorPage() {
   const [bouquet, setBouquet] = useState([]);
 
-  const [bgColor, setBgColor] = useState('#fff4ea'); // 기본 배경색
+  const [bgColor, setBgColor] = useState('white'); // 기본 배경색
 
   const handleChangeBackground = () => {
     // 랜덤 파스텔 색상 생성
@@ -78,7 +78,7 @@ const handleMoveBackward = (index) => {
 
   const handleClear = () => {
   setBouquet([]);
-  setBgColor('#fff4ea'); 
+  setBgColor('white'); 
 };
 
   const handleUndo = () => setBouquet(prev => prev.slice(0, -1));
